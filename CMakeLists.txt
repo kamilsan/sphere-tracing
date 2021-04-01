@@ -12,7 +12,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(CMAKE_CXX_STANDARD 17)
 
 set(PROJECT_CODE
-    )
+  include/Color.hpp
+  include/Image.hpp src/Image.cpp)
 
 add_subdirectory(googletest)
 include_directories(googletest include)
