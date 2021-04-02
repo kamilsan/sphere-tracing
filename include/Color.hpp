@@ -7,6 +7,9 @@ struct Color
   Color(float v): r(v), g(v), b(v) {}
   Color(): r(0), g(0), b(0) {}
 
+  bool operator==(const Color& other) const { return r == other.r && g == other.g && b == other.b; }
+  bool operator!=(const Color& other) const { return !operator==(other); }
+
   Color operator+(const Color& other) const
   {
     return {r + other.r, g + other.g, b + other.b};
@@ -64,6 +67,16 @@ struct Color
     b *= f;
 
     return *this;
+  }
+
+  friend Color operator*(float weight, const Color& color)
+  {
+    return color*weight;
+  }
+
+  friend Color operator/(float weight, const Color& color)
+  {
+    return color/weight;
   }
 
   float r;

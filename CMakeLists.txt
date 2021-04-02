@@ -13,7 +13,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(PROJECT_CODE
   include/Color.hpp
-  include/Image.hpp src/Image.cpp)
+  include/Image.hpp src/Image.cpp
+  include/Vector.hpp src/Vector.cpp
+  include/Renderer.hpp src/Renderer.cpp)
 
 add_subdirectory(googletest)
 include_directories(googletest include)
@@ -25,6 +27,8 @@ add_executable(app
 
 add_executable(app-tests
   ${PROJECT_CODE}
+  tests/ImageTest.cpp
+  tests/VectorTest.cpp
   tests/main.cpp)
 
 target_link_libraries(app-tests gtest gtest_main)

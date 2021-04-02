@@ -26,7 +26,7 @@ Image::Image(const char* filename)
     throw std::runtime_error("Unsupported image type!\n");
   }
 
-  for(unsigned int i = 0; i < len_; ++i)
+  for(int i = 0; i < len_; ++i)
   {
     pixels_[i] = sRGBDecode(data[i] / 255.0f);
   }
@@ -43,9 +43,9 @@ Image::Image(const Image& other)
 {
   width_ = other.width_;
   height_ = other.height_;
+  len_ = other.len_;
 
-  int len = 3*width_*height_;
-  pixels_ = std::make_unique<float[]>(len);
+  pixels_ = std::make_unique<float[]>(len_);
   memcpy(pixels_.get(), other.pixels_.get(), len_ * sizeof(float));
 }
 
@@ -53,6 +53,7 @@ Image::Image(Image&& other)
 {
   width_ = other.width_;
   height_ = other.height_;
+  len_ = other.len_;
   pixels_ = std::move(other.pixels_);
 }
 
@@ -82,9 +83,9 @@ Image& Image::operator=(const Image& other)
   {
     width_ = other.width_;
     height_ = other.height_;
+    len_ = other.len_;
 
-    int len = 3*width_*height_;
-    pixels_ = std::make_unique<float[]>(len);
+    pixels_ = std::make_unique<float[]>(len_);
     memcpy(pixels_.get(), other.pixels_.get(), len_ * sizeof(float));
   }
 
@@ -97,6 +98,7 @@ Image& Image::operator=(Image&& other)
   {
     width_ = other.width_;
     height_ = other.height_;
+    len_ = other.len_;
     pixels_ = std::move(other.pixels_);
   }
 
