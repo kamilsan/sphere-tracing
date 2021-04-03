@@ -13,8 +13,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(PROJECT_CODE
   include/Color.hpp
+  include/Ray.hpp
   include/Image.hpp src/Image.cpp
   include/Vector.hpp src/Vector.cpp
+  include/SDF.hpp src/SDF.cpp
   include/Renderer.hpp src/Renderer.cpp)
 
 add_subdirectory(googletest)
